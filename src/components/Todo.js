@@ -1,6 +1,5 @@
 function Todo({ todo, todos, setTodos}) {
   const toggleTodo = () => {
-    console.log(todo.id)
     setTodos(
       todos.map(t => {
         if(t.id === todo.id) {
@@ -22,7 +21,7 @@ function Todo({ todo, todos, setTodos}) {
   return (
     <li className="todo" key={todo.id} >
       <div className="view">
-        <input type="checkbox" className="toggle" value={todo.completed} onClick={toggleTodo}/>
+        <input type="checkbox" className="toggle" defaultChecked={todo.completed} onClick={toggleTodo}/>
         <label htmlFor="">{todo.text}</label>
         <button className="destroy" onClick={removeTodo}>x</button>
       </div>
