@@ -1,9 +1,21 @@
 import Todo from './Todo'
 
-function Todos({ todos, setTodos, filterTodos }) {
+function Todos({ todos, setTodos, filterTodos, toggleAll, setToggleAll }) {
+  const toggleAllTodos = () => {
+    setToggleAll(!toggleAll)
+    setTodos(
+      todos = todos.map(todo => {
+        return {
+          ...todo,
+          completed: !toggleAll
+        }
+      })
+    )
+  }
+  
   return (
     <main className="main">
-      <input id="toggle-all" type="checkbox" className="toggle-all" />
+      <input id="toggle-all" type="checkbox" className="toggle-all" onClick={toggleAllTodos}/>
       <label htmlFor="toggle-all"></label>
       <ul className="todo-list">
         {filterTodos.map(todo => (
