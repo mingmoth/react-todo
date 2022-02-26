@@ -9,7 +9,7 @@ function Footer({ todos, setTodos, status, setStatus, activeTodos }) {
   }
   return (
     <footer className="footer">
-      <span className="todo-count"> <strong> {activeTodos.length} </strong> {activeTodos.length > 1? 'items' : 'item'} left </span>
+      <span className="todo-count"> <strong> {activeTodos} </strong> {activeTodos.length > 1? 'items' : 'item'} left </span>
       <ul className="filters">
         <li>
           <a href="#/all" onClick={toggleStatus} className={`${status === 'All' ? "selected": ""}`} >All</a>
