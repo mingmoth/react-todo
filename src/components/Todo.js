@@ -53,7 +53,7 @@ function Todo({ todo, todos, setTodos, editTodo, setEditTodo }) {
   return (
     <li key={todo.id} className={`"todo" ${todo.id === editTodo.id ? "editing" : ""} ${todo.completed? "completed": ""}`} >
       <div className="view">
-        <input type="checkbox" className="toggle"  defaultChecked={todo.completed} onChange={toggleTodo} />
+        <input type="checkbox" className="toggle" checked={todo.completed} onChange={toggleTodo} />
         <label htmlFor="" onDoubleClick={startEditTodo} >{todo.text}</label>
         <button className="destroy" onClick={removeTodo}></button>
       </div>
