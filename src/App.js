@@ -9,26 +9,26 @@ function App() {
   const [todos, setTodos] = useState([])
   const [status, setStatus] = useState('All')
   const [filterTodos, setFilterTodos] = useState([])
+  const [editTodo, setEditTodo] = useState({})
   const [toggleAll, setToggleAll] = useState(false)
   const activeTodos = useMemo(() => todos.filter(todo => !todo.completed), [todos])
 
   useEffect(() => {
+    const filteredTodos = () => {
+      switch (status) {
+        case 'Active':
+          setFilterTodos(todos.filter(todo => !todo.completed))
+          break
+        case 'Completed':
+          setFilterTodos(todos.filter(todo => todo.completed))
+          break
+        default:
+          setFilterTodos(todos)
+      }
+    }
     filteredTodos()
   }, [todos, status])
   
-  const filteredTodos = () => {
-    switch (status) {
-      case 'Active':
-        setFilterTodos(todos.filter(todo => !todo.completed))
-        break
-      case 'Completed':
-        setFilterTodos(todos.filter(todo => todo.completed))
-        break
-      default:
-        setFilterTodos(todos)
-    }
-  }
-
   return (
     <div className="App">
       <section className='todoapp'>
@@ -36,8 +36,8 @@ function App() {
           <h1>todos</h1>
         </header>
         <Form input={input} setInput={setInput} todos={todos} setTodos={setTodos} />
-        <Todos todos={todos} setTodos={setTodos} filterTodos={filterTodos} toggleAll={toggleAll} setToggleAll={setToggleAll} />
-        <Footer todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} setFilterTodos={setFilterTodos} activeTodos={activeTodos} />
+        <Todos todos={todos} setTodos={setTodos} filterTodos={filterTodos} toggleAll={toggleAll} setToggleAll={setToggleAll} editTodo={editTodo} setEditTodo={setEditTodo}/>
+        {todos.length ? (<Footer todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} setFilterTodos={setFilterTodos} activeTodos={activeTodos} />): null}
       </section>
     </div>
   );
