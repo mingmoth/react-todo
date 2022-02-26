@@ -23,7 +23,7 @@ function Todo({ todo, todos, setTodos}) {
       <div className="view">
         <input type="checkbox" className="toggle" defaultChecked={todo.completed} onClick={toggleTodo}/>
         <label htmlFor="">{todo.text}</label>
-        <button className="destroy" onClick={removeTodo}>x</button>
+        <button className="destroy" onClick={removeTodo}></button>
       </div>
       <input type="text" className="edit" />
     </li>

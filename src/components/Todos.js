@@ -3,14 +3,6 @@ import Todo from './Todo'
 function Todos({ todos, setTodos, filterTodos, toggleAll, setToggleAll }) {
   const toggleAllTodos = () => {
     setToggleAll(!toggleAll)
-    setTodos(
-      todos = todos.map(todo => {
-        return {
-          ...todo,
-          completed: !toggleAll
-        }
-      })
-    )
   }
   
   return (
